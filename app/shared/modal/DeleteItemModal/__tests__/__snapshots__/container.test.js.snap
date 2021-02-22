@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DeleteItemModalContainer /> should match snapshot 1`] = `
+<DeleteItemModalComponent
+  onConfirm={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "movieId": 9999,
+          },
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  params={
+    Object {
+      "movieId": 9999,
+    }
+  }
+  showModal={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  title="some title"
+/>
+`;
