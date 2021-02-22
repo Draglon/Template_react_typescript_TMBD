@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormField /> component Render snapshot - with error 1`] = `
+<div
+  className="form__field form__field--error"
+>
+  <Input
+    className="error"
+    disabled={false}
+    name="name"
+    placeholder="placeholder"
+    prefix={false}
+    type="text"
+  />
+  <FormikConnect(ErrorMessageImpl)
+    component="div"
+    name="name"
+  />
+</div>
+`;
+
+exports[`<FormField /> component Render snapshot - with field prefix and error 1`] = `
+<div
+  className="form__field form__field--error"
+>
+  <Input
+    className="error"
+    disabled={false}
+    name="name"
+    placeholder="placeholder"
+    prefix={
+      <Icon
+        type="lock"
+      />
+    }
+    type="text"
+  />
+  <FormikConnect(ErrorMessageImpl)
+    component="div"
+    name="name"
+  />
+</div>
+`;
+
+exports[`<FormField /> component Render snapshot - with field prefix and without error 1`] = `
+<div
+  className="form__field"
+>
+  <Input
+    className="error"
+    disabled={false}
+    name="name"
+    placeholder="placeholder"
+    prefix={
+      <Icon
+        type="lock"
+      />
+    }
+    type="text"
+  />
+  <FormikConnect(ErrorMessageImpl)
+    component="div"
+    name="name"
+  />
+</div>
+`;
+
+exports[`<FormField /> component Render snapshot - without error 1`] = `
+<div
+  className="form__field"
+>
+  <Input
+    className="error"
+    disabled={false}
+    name="name"
+    placeholder="placeholder"
+    prefix={false}
+    type="text"
+  />
+  <FormikConnect(ErrorMessageImpl)
+    component="div"
+    name="name"
+  />
+</div>
+`;

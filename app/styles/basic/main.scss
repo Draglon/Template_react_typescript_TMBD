@@ -1,0 +1,114 @@
+.page {
+  background-color: $white;
+  font-size: $font-size-base;
+  min-height: 100vh;
+}
+
+.ant-layout {
+  background-color: $white;
+}
+
+.top-margin {
+  margin-top: 20px;
+}
+
+.top-padding {
+  margin-top: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: stretch;
+
+  &__empty {
+    margin: 0 auto;
+  }
+}
+
+.ant-card {
+  height: calc(100% - 20px);
+}
+
+.text-size .ant-card-meta-description {
+  overflow: hidden;
+  height: 100%;
+  height: 100px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 400px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+
+.movie-image {
+  background-attachment: fixed;
+  width: 100%;
+}
+
+.movie {
+  &__img {
+    width: 100%;
+  }
+
+  .ant-card-body {
+    padding: 0;
+  }
+
+  .ant-card-meta {
+    padding: 24px;
+  }
+
+
+  &__details {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+}
+
+.lists {
+  display: flex;
+  flex-wrap: wrap;
+
+  .ant-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.popover {
+  &__nav {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        &:first-child {
+          border-bottom: 1px solid #e8e8e8;
+          margin: 0 -16px 10px;
+        }
+      }
+    }
+  }
+}
+
+.ant-dropdown {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .25);
+  border-radius: 5px;
+  overflow: hidden;
+}

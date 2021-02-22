@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieComponent /> should match snapshot 1`] = `
+<Fragment>
+  <MovieCarouselComponent
+    backdrops={
+      Array [
+        Object {
+          "file_path": "path",
+        },
+        Object {
+          "file_path": "path",
+        },
+        Object {
+          "file_path": "path",
+        },
+      ]
+    }
+    title="some title"
+  />
+  <MovieTitleComponent
+    movie={
+      Object {
+        "backdrops": Array [
+          Object {
+            "file_path": "path",
+          },
+          Object {
+            "file_path": "path",
+          },
+          Object {
+            "file_path": "path",
+          },
+        ],
+        "budget": 100000,
+        "genres": Array [
+          1,
+          2,
+          3,
+        ],
+        "id": 999,
+        "language": "English",
+        "overview": "some overview",
+        "revenue": 1000000,
+        "runtime": 140,
+        "title": "some title",
+      }
+    }
+  />
+  <MovieOverviewComponent
+    overview="some overview"
+    title="overview"
+  />
+  <MovieLabelComponent
+    text="English"
+    title="Original Language"
+  />
+  <MovieLabelComponent
+    text="2h 20m"
+    title="Runtime"
+  />
+  <MovieLabelComponent
+    text="$100,000.00"
+    title="Budget"
+  />
+  <MovieLabelComponent
+    text="$1,000,000.00"
+    title="Revenue"
+  />
+  <MovieGenresComponent
+    genres={
+      Array [
+        Object {
+          "id": 1,
+        },
+        Object {
+          "id": 2,
+        },
+        Object {
+          "id": 3,
+        },
+      ]
+    }
+    title="Genres"
+  />
+  <MovieDetailsComponent
+    movieDetails={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+    title="Casts"
+  />
+  <MovieDetailsComponent
+    movieDetails={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+    title="Crew"
+  />
+</Fragment>
+`;
