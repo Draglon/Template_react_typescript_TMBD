@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { Row, Col, Pagination } from 'antd';
 
+export interface Props {
+  totalPages: number,
+  currentPage: number,
+  page(page: number): void;
+}
+
 const PaginationComponent = ({
   page,
   currentPage,
   totalPages,
-}) => (
+}: Props) => (
   totalPages > 1 && (
     <Row type="flex" justify="center" className="top-padding">
       <Col>
@@ -20,11 +26,5 @@ const PaginationComponent = ({
     </Row>
   )
 );
-
-// PaginationComponent.propTypes = {
-//   page: PropTypes.func.isRequired,
-//   currentPage: PropTypes.number.isRequired,
-//   totalPages: PropTypes.number.isRequired,
-// };
 
 export default PaginationComponent;

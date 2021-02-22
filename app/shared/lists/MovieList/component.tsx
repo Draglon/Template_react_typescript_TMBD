@@ -4,12 +4,23 @@ import { Row, Col, Empty } from 'antd';
 import MovieItem from './MovieItem';
 import DeleteItemModal from '../../modal/DeleteItemModal';
 
-const MovieListComponent = ({ movies, modalParams }) => (
+export interface ModalParams {
+  title: string,
+  params: object,
+  onConfirm(): void,
+}
+
+export interface Props {
+  movies: any,
+  modalParams: ModalParams,
+}
+
+const MovieListComponent = ({ movies, modalParams }: Props) => (
   <Row className="top-padding" type="flex" gutter={16}>
     <Col className="cards" span={20} offset={2}>
       {movies.length !== 0 && (
         <>
-          {movies.map(item => (
+          {movies.map((item: any) => (
             <Col
               key={item.id}
               xs={{ span: 12 }}
@@ -45,14 +56,5 @@ const MovieListComponent = ({ movies, modalParams }) => (
     </Col>
   </Row>
 );
-
-// MovieListComponent.defaultProps = {
-//   modalParams: null,
-// };
-
-// MovieListComponent.propTypes = {
-//   movies: PropTypes.array.isRequired,
-//   modalParams: PropTypes.object,
-// };
 
 export default MovieListComponent;

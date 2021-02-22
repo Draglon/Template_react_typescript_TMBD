@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { Icon } from 'antd';
 
-const DeleteItemModalComponent = ({ type, showModal }) => (
+export interface Props {
+  type: string,
+  showModal(): void;
+}
+
+const DeleteItemModalComponent = ({ type, showModal }: Props) => (
   <Icon key="delete" type={type} onClick={showModal} />
 );
-
-// DeleteItemModalComponent.defaultTypes = {
-//   type: null,
-// };
-
-// DeleteItemModalComponent.propTypes = {
-//   type: PropTypes.string,
-//   showModal: PropTypes.func.isRequired,
-// };
 
 export default DeleteItemModalComponent;

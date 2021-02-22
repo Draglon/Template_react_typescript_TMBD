@@ -4,7 +4,19 @@ import { Card } from 'antd';
 
 import Image from '../../../images/Image';
 
-const MovieItemComponent = ({ item, actions }) => (
+export interface Item {
+  id: string,
+  poster_path: string,
+  title: string,
+  overview: string,
+}
+
+export interface Props {
+  item: Item,
+  actions: object[],
+}
+
+const MovieItemComponent = ({ item, actions }: Props) => (
   <Card
     className="top-margin"
     hoverable
@@ -16,14 +28,5 @@ const MovieItemComponent = ({ item, actions }) => (
     </Link>
   </Card>
 );
-
-// MovieItemComponent.defaultProps = {
-//   actions: null,
-// };
-
-// MovieItemComponent.propTypes = {
-//   item: PropTypes.object.isRequired,
-//   actions: PropTypes.array,
-// };
 
 export default MovieItemComponent;

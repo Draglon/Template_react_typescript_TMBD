@@ -5,13 +5,17 @@ import { createListRequest as createListRequestAction } from '../../../store/the
 
 import CreateListModalComponent from './component';
 
-class CreateListModalContainer extends React.Component {
-  constructor(props) {
-    super(props);
+export interface Props {
+  icon: string,
+  text: string,
+  createListRequest(params: object): void;
+}
 
-    this.state = {
-      modalVisible: false,
-    };
+export interface State {}
+
+class CreateListModalContainer extends React.Component<Props, State> {
+  state = {
+    modalVisible: false,
   }
 
   showModal = () => {
@@ -22,29 +26,22 @@ class CreateListModalContainer extends React.Component {
     this.setState({ modalVisible: false });
   };
 
-  onSubmit = (values, actions) => {
+  onSubmit = (values: any, actions: any) => {
     const { createListRequest } = this.props;
     actions.setSubmitting(true);
     createListRequest({ values, actions, hideModal: this.hideModal });
   };
 
-  render() {
-    const { modalVisible } = this.state;
-    return (
-      <CreateListModalComponent
-        {...this.props}
-        modalVisible={modalVisible}
-        showModal={this.showModal}
-        hideModal={this.hideModal}
-        onSubmit={this.onSubmit}
-      />
-    );
-  }
+  render = () => (
+    <CreateListModalComponent
+      {...this.props}
+      {...this.state}
+      showModal={this.showModal}
+      hideModal={this.hideModal}
+      onSubmit={this.onSubmit}
+    />
+  )
 }
-
-// CreateListModalContainer.propTypes = {
-//   createListRequest: PropTypes.func.isRequired,
-// };
 
 const mapDispatchToProps = {
   createListRequest: createListRequestAction,

@@ -3,7 +3,16 @@ import { Modal } from 'antd';
 
 import DeleteItemModalComponent from './component';
 
-class DeleteItemModalContainer extends React.Component {
+export interface Props {
+  type: string,
+  title: string,
+  params: object,
+  onConfirm(params: object): void;
+}
+
+export interface State {}
+
+class DeleteItemModalContainer extends React.Component<Props, State> {
   onOk = () => {
     const { params, onConfirm } = this.props;
     onConfirm(params);
@@ -17,19 +26,12 @@ class DeleteItemModalContainer extends React.Component {
     });
   };
 
-  render() {
-    return <DeleteItemModalComponent {...this.props} showModal={this.showModal} />;
-  }
+  render = () => (
+    <DeleteItemModalComponent
+      {...this.props}
+      showModal={this.showModal}
+    />
+  )
 }
-
-// DeleteItemModalContainer.defaultProps = {
-//   params: null,
-// };
-
-// DeleteItemModalContainer.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   params: PropTypes.object,
-//   onConfirm: PropTypes.func.isRequired,
-// };
 
 export default DeleteItemModalContainer;

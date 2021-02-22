@@ -1,19 +1,13 @@
 import * as React from 'react';
 
-const ImageComponent = ({ className, path, alt }) => (
+export interface Props {
+  className: string,
+  path: string,
+  alt: string,
+}
+
+const ImageComponent = ({ className, path, alt }: Props) => (
   <img className={className} src={`https://image.tmdb.org/t/p/original/${path}`} alt={alt} />
 );
-
-// ImageComponent.defaultProps = {
-//   className: '',
-//   path: '',
-//   alt: '',
-// };
-
-// ImageComponent.propTypes = {
-//   className: PropTypes.string,
-//   path: PropTypes.string,
-//   alt: PropTypes.string,
-// };
 
 export default ImageComponent;

@@ -11,7 +11,16 @@ const createListSchema = Yup.object().shape({
   description: Yup.string().required('Required description'),
 });
 
-const CreateListModalComponent = ({ modalVisible, showModal, hideModal, onSubmit, icon, text }) => (
+export interface Props {
+  icon: string,
+  text: string,
+  modalVisible: boolean,
+  showModal(): void,
+  hideModal(): void,
+  onSubmit(values: object, actions: object): void,
+}
+
+const CreateListModalComponent = ({ modalVisible, showModal, hideModal, onSubmit, icon, text }: Props) => (
   <>
     {icon && <Icon type={icon} onClick={showModal} />}
     {text && (
@@ -42,19 +51,5 @@ const CreateListModalComponent = ({ modalVisible, showModal, hideModal, onSubmit
     />
   </>
 );
-
-// CreateListModalComponent.defaultProps = {
-//   icon: '',
-//   text: '',
-// };
-
-// CreateListModalComponent.propTypes = {
-//   modalVisible: PropTypes.bool.isRequired,
-//   showModal: PropTypes.func.isRequired,
-//   hideModal: PropTypes.func.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-//   icon: PropTypes.string,
-//   text: PropTypes.string,
-// };
 
 export default CreateListModalComponent;
