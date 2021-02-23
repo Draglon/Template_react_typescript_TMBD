@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Button } from 'antd';
 
-const PopoverNavLinkComponent = ({ list, onClick }) => (
+interface Props {
+  list: any,
+  onClick(): void,
+}
+
+const PopoverNavLinkComponent = ({ list, onClick }: Props) => (
   <Button type="link" onClick={onClick}>
     {list.name}
   </Button>
 );
-
-// PopoverNavLinkComponent.propTypes = {
-//   onClick: PropTypes.func.isRequired,
-//   list: PropTypes.object.isRequired,
-// };
 
 export default PopoverNavLinkComponent;

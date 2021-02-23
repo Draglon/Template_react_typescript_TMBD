@@ -2,34 +2,33 @@ import * as React from 'react';
 
 import PopoverComponent from './component';
 
-class PopoverContainer extends React.Component {
-  constructor(props) {
-    super(props);
+interface Props {
+  movieId: string,
+}
 
-    this.state = {
-      popoverVisible: false,
-    };
+interface State {}
+
+class PopoverContainer extends React.Component<Props, State> {
+  state = {
+    popoverVisible: false,
   }
 
-  closePopover = () => {
+  handleClosePopover = () => {
     this.handleVisiblePopover(false);
   };
 
-  handleVisiblePopover = visible => {
+  handleVisiblePopover = (visible: boolean) => {
     this.setState({ popoverVisible: visible });
   };
 
-  render() {
-    const { popoverVisible } = this.state;
-    return (
-      <PopoverComponent
-        {...this.props}
-        popoverVisible={popoverVisible}
-        handleVisiblePopover={this.handleVisiblePopover}
-        closePopover={this.closePopover}
-      />
-    );
-  }
+  render = () => (
+    <PopoverComponent
+      {...this.props}
+      {...this.state}
+      onVisiblePopover={this.handleVisiblePopover}
+      onClosePopover={this.handleClosePopover}
+    />
+  )
 }
 
 export default PopoverContainer;

@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Button } from 'antd';
 
 export interface Props {
-  htmlType: string,
+  htmlType: any,
   icon: string,
-  type: string,
+  type: any,
   value: string,
-  size: string,
+  size: any,
 }
 
 const FormButton = ({ htmlType, type, value, size, icon }: Props) => (

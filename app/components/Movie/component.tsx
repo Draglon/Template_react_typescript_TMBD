@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { formatMoney, formatTime } from '../../helpers/format';
 
 import MovieCarousel from './MovieCarousel';
@@ -8,7 +9,27 @@ import MovieLabel from './MovieLabel';
 import MovieGenres from './MovieGenres';
 import MovieDetails from './MovieDetails';
 
-const MovieComponent = ({ movie, genres, cast, crew }) => (
+interface Movie {
+  id: string,
+  title: string,
+  backdrops: any,
+  overview: string,
+  language: string,
+  runtime: string,
+  budget: string,
+  revenue: string,
+  watchlist: any,
+  favorite: any,
+}
+
+interface Props {
+  movie: Movie,
+  genres: any,
+  cast: any,
+  crew: any,
+}
+
+const MovieComponent = ({ movie, genres, cast, crew }: Props) => (
   <>
     {movie && (
       <>
@@ -26,19 +47,5 @@ const MovieComponent = ({ movie, genres, cast, crew }) => (
     )}
   </>
 );
-
-// MovieComponent.defaultTypes = {
-//   movie: null,
-//   genres: [],
-//   cast: [],
-//   crew: [],
-// };
-
-// MovieComponent.propTypes = {
-//   movie: PropTypes.object,
-//   genres: PropTypes.array,
-//   cast: PropTypes.array,
-//   crew: PropTypes.array,
-// };
 
 export default MovieComponent;

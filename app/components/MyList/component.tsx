@@ -3,20 +3,25 @@ import * as React from 'react';
 import MyListTitle from './MyListTitle';
 import MovieList from '../../shared/lists/MovieList';
 
-const MyListComponent = ({ myList, modalParams }) => (
+interface ModalParams {
+  title: string,
+  params: any,
+  onConfirm(): void,
+}
+
+interface Props {
+  myList: any,
+  modalParams: ModalParams,
+}
+
+const MyListComponent = ({
+  myList,
+  modalParams,
+}: Props) => myList && (
   <>
-    {myList && (
-      <>
-        <MyListTitle myList={myList} />
-        <MovieList movies={myList.results} modalParams={modalParams} />
-      </>
-    )}
+    <MyListTitle myList={myList} />
+    <MovieList movies={myList.results} modalParams={modalParams} />
   </>
 );
-
-// MyListComponent.propTypes = {
-//   modalParams: PropTypes.object.isRequired,
-//   myList: PropTypes.object.isRequired,
-// };
 
 export default MyListComponent;

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Icon } from 'antd';
 
-const WatchlistIconComponent = ({ watchlist, handleWatchlist }) => (
-  <Icon type="heart" theme={watchlist ? 'filled' : undefined} onClick={handleWatchlist} />
-);
+interface Props {
+  watchlist: any,
+  onWatchlist(): void
+}
 
-// WatchlistIconComponent.propTypes = {
-//   handleWatchlist: PropTypes.func.isRequired,
-//   watchlist: PropTypes.bool.isRequired,
-// };
+const WatchlistIconComponent = ({ watchlist, onWatchlist }: Props) => (
+  <Icon type="heart" theme={watchlist ? 'filled' : undefined} onClick={onWatchlist} />
+);
 
 export default WatchlistIconComponent;

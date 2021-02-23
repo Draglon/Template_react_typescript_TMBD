@@ -6,23 +6,29 @@ import { getCreatedLists } from '../../../../../store/theMovieDB/myLists/selecto
 
 import PopoverContentComponent from './component';
 
-class PopoverContentContainer extends React.Component {
+interface Props {
+  myLists: any,
+  movieId: string,
+  onClosePopover(): void,
+  createdListsRequest(params: object): void
+}
+
+interface State {
+  myLists: any,
+}
+
+class PopoverContentContainer extends React.Component<Props, State> {
   componentDidMount() {
     const { createdListsRequest } = this.props;
     createdListsRequest({ page: 1 });
   }
 
-  render() {
-    return <PopoverContentComponent {...this.props} />;
-  }
+  render = () => (
+    <PopoverContentComponent {...this.props} />
+  )
 }
 
-// PopoverContentContainer.propTypes = {
-//   createdListsRequest: PropTypes.func.isRequired,
-//   myLists: PropTypes.object.isRequired,
-// };
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State) => ({
   myLists: getCreatedLists(state),
 });
 

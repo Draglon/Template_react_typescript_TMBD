@@ -5,7 +5,18 @@ import Popover from './Popover';
 import WatchlistIcon from './WatchlistIcon';
 import FavoriteIcon from './FavoriteIcon';
 
-const MovieTitleComponent = ({ movie }) => (
+interface Movie {
+  id: string,
+  title: string,
+  watchlist: any,
+  favorite: any,
+}
+
+interface Props {
+  movie: Movie,
+}
+
+const MovieTitleComponent = ({ movie }: Props) => (
   <Row className="top-margin">
     <Col span={20} offset={2}>
       <Typography.Title>
@@ -16,9 +27,5 @@ const MovieTitleComponent = ({ movie }) => (
     </Col>
   </Row>
 );
-
-// MovieTitleComponent.propTypes = {
-//   movie: PropTypes.object.isRequired,
-// };
 
 export default MovieTitleComponent;

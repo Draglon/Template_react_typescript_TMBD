@@ -4,28 +4,40 @@ import { Row, Col, Typography } from 'antd';
 import MovieList from '../../shared/lists/MovieList';
 import Pagination from '../../shared/Pagination';
 
-const WatchlistComponent = ({ watchlist, page, modalParams }) => (
+interface Watchlist {
+  page: number,
+  totalPages: number,
+  results: number,
+}
+
+interface ModalParams {
+  title: string,
+  params: object,
+  onConfirm(): void,
+}
+
+interface Props {
+  watchlist: Watchlist,
+  modalParams: ModalParams,
+  onGetPage(page: number): void;
+}
+
+const WatchlistComponent = ({
+  watchlist,
+  onGetPage,
+  modalParams,
+}: Props) => watchlist && (
   <>
-    {watchlist && (
-      <>
-        <Row>
-          <Col offset={2} span={20}>
-            <div className="top-margin">
-              <Typography.Title>Watchlist</Typography.Title>
-            </div>
-          </Col>
-        </Row>
-        <MovieList movies={watchlist.results} modalParams={modalParams} />
-        <Pagination currentPage={watchlist.page} page={page} totalPages={watchlist.totalPages} />
-      </>
-    )}
+    <Row>
+      <Col offset={2} span={20}>
+        <div className="top-margin">
+          <Typography.Title>Watchlist</Typography.Title>
+        </div>
+      </Col>
+    </Row>
+    <MovieList movies={watchlist.results} modalParams={modalParams} />
+    <Pagination currentPage={watchlist.page} page={onGetPage} totalPages={watchlist.totalPages} />
   </>
 );
-
-// WatchlistComponent.propTypes = {
-//   watchlist: PropTypes.object.isRequired,
-//   page: PropTypes.func.isRequired,
-//   modalParams: PropTypes.object.isRequired,
-// };
 
 export default WatchlistComponent;

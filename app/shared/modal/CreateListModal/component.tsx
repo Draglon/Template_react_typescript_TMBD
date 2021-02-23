@@ -12,8 +12,8 @@ const createListSchema = Yup.object().shape({
 });
 
 export interface Props {
-  icon: string,
-  text: string,
+  icon?: string,
+  text?: string,
   modalVisible: boolean,
   showModal(): void,
   hideModal(): void,

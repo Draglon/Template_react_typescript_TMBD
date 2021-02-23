@@ -5,16 +5,19 @@ import { deleteListRequest as deleteListRequestAction } from '../../../store/the
 
 import ListsComponent from './component';
 
-class ListsContainer extends React.Component {
+interface Props {
+  lists: any,
+  deleteListRequest(): void,
+}
+
+interface State {}
+
+class ListsContainer extends React.Component<Props, State> {
   render() {
     const { deleteListRequest } = this.props;
     return <ListsComponent {...this.props} onConfirm={deleteListRequest} />;
   }
 }
-
-// ListsContainer.propTypes = {
-//   deleteListRequest: PropTypes.func.isRequired,
-// };
 
 const mapDispatchToProps = {
   deleteListRequest: deleteListRequestAction,

@@ -3,7 +3,20 @@ import { Typography, Row, Col } from 'antd';
 
 import DeleteItemModal from '../../../shared/modal/DeleteItemModal';
 
-const MyListsTitleComponent = ({ myList, modalParams }) => (
+interface ModalParams {
+  title: string,
+  onConfirm(): void,
+}
+
+interface Props {
+  myList: any,
+  modalParams: ModalParams,
+}
+
+const MyListsTitleComponent = ({
+  myList,
+  modalParams,
+}: Props) => (
   <Row>
     <Col offset={2} span={20}>
       <div className="top-margin">
@@ -19,10 +32,5 @@ const MyListsTitleComponent = ({ myList, modalParams }) => (
     </Col>
   </Row>
 );
-
-// MyListsTitleComponent.propTypes = {
-//   myList: PropTypes.object.isRequired,
-//   modalParams: PropTypes.object.isRequired,
-// };
 
 export default MyListsTitleComponent;

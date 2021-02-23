@@ -3,11 +3,16 @@ import { Row, Col, Carousel } from 'antd';
 
 import Image from '../../../shared/images/Image';
 
-const MovieCarouselComponent = ({ backdrops, title }) => (
+interface Props {
+  backdrops: any,
+  title: string,
+}
+
+const MovieCarouselComponent = ({ backdrops, title }: Props) => (
   <Row type="flex">
     <Col span={24}>
       <Carousel autoplay>
-        {backdrops.map((item, index) => (
+        {backdrops.map((item: any, index: number) => (
           <div key={index}>
             <Image className="movie-image" path={item.file_path} alt={title} />
           </div>
@@ -16,10 +21,5 @@ const MovieCarouselComponent = ({ backdrops, title }) => (
     </Col>
   </Row>
 );
-
-// MovieCarouselComponent.propTypes = {
-//   backdrops: PropTypes.array.isRequired,
-//   title: PropTypes.string.isRequired,
-// };
 
 export default MovieCarouselComponent;

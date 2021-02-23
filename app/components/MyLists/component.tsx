@@ -4,21 +4,17 @@ import MyListsTitle from './MyListsTitle';
 import Lists from './Lists';
 import Pagination from '../../shared/Pagination';
 
-const MyListsComponent = ({ myLists, page }) => (
+interface Props {
+  myLists: any,
+  onGetPage(page: number): void;
+}
+
+const MyListsComponent = ({ myLists, onGetPage }: Props) => myLists && (
   <>
-    {myLists && (
-      <>
-        <MyListsTitle />
-        <Lists lists={myLists.results} />
-        <Pagination currentPage={myLists.page} page={page} totalPages={myLists.totalPages} />
-      </>
-    )}
+    <MyListsTitle />
+    <Lists lists={myLists.results} />
+    <Pagination currentPage={myLists.page} page={onGetPage} totalPages={myLists.totalPages} />
   </>
 );
-
-// MyListsComponent.propTypes = {
-//   page: PropTypes.func.isRequired,
-//   myLists: PropTypes.object.isRequired,
-// };
 
 export default MyListsComponent;

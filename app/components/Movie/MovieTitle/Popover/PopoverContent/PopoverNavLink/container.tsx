@@ -5,24 +5,29 @@ import { addMovieListRequest as addMovieListRequestAction } from '../../../../..
 
 import PopoverNavLinkComponent from './component';
 
-class PopoverNavLinkContainer extends React.Component {
-  onClick = () => {
-    const { addMovieListRequest, list, movieId, closePopover } = this.props;
-    addMovieListRequest({ listId: list.id, movieId });
-    closePopover();
-  };
-
-  render() {
-    return <PopoverNavLinkComponent {...this.props} onClick={this.onClick} />;
-  }
+interface Props {
+  list: any,
+  movieId: string,
+  onClosePopover(): void,
+  addMovieListRequest(params: object): void,
 }
 
-// PopoverNavLinkContainer.propTypes = {
-//   addMovieListRequest: PropTypes.func.isRequired,
-//   closePopover: PropTypes.func.isRequired,
-//   list: PropTypes.object.isRequired,
-//   movieId: PropTypes.number.isRequired,
-// };
+interface State {}
+
+class PopoverNavLinkContainer extends React.Component<Props, State> {
+  handleClick = () => {
+    const { addMovieListRequest, list, movieId, onClosePopover } = this.props;
+    addMovieListRequest({ listId: list.id, movieId });
+    onClosePopover();
+  };
+
+  render = () => (
+    <PopoverNavLinkComponent
+      {...this.props}
+      onClick={this.handleClick}
+    />
+  )
+}
 
 const mapDispatchToProps = {
   addMovieListRequest: addMovieListRequestAction,

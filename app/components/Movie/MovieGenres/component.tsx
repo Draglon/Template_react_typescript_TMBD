@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { Row, Col, Typography, Tag } from 'antd';
 
-const MovieGenresComponent = ({ title, genres }) => (
+interface Props {
+  genres: any,
+  title: string,
+}
+
+const MovieGenresComponent = ({ title, genres }: Props) => (
   <Row>
     <Col span={20} offset={2}>
       <Typography.Paragraph className="movie__text">
         <b>{title}: </b>
-        {genres.map(item => (
+        {genres.map((item: any) => (
           <Tag key={item.id}>{item.name}</Tag>
         ))}
       </Typography.Paragraph>
     </Col>
   </Row>
 );
-
-// MovieGenresComponent.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   genres: PropTypes.array.isRequired,
-// };
 
 export default MovieGenresComponent;
