@@ -5,22 +5,27 @@ import { addToWatchlistRequest as addToWatchlistRequestAction } from '../../../.
 
 import WatchlistIconComponent from './component';
 
-class WatchlistIconContainer extends React.Component {
+interface Props {
+  watchlist: any,
+  movieId: string,
+  addToWatchlistRequest(params: object): void
+}
+
+interface State {}
+
+class WatchlistIconContainer extends React.Component<Props, State> {
   handleWatchlist = () => {
     const { addToWatchlistRequest, watchlist, movieId } = this.props;
     addToWatchlistRequest({ movieId, watchlist: !watchlist });
   };
 
-  render() {
-    return <WatchlistIconComponent {...this.props} handleWatchlist={this.handleWatchlist} />;
-  }
+  render = () => (
+    <WatchlistIconComponent
+      {...this.props}
+      onWatchlist={this.handleWatchlist}
+    />
+  )
 }
-
-// WatchlistIconContainer.propTypes = {
-//   addToWatchlistRequest: PropTypes.func.isRequired,
-//   movieId: PropTypes.number.isRequired,
-//   watchlist: PropTypes.bool.isRequired,
-// };
 
 const mapDispatchToProps = {
   addToWatchlistRequest: addToWatchlistRequestAction,

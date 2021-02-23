@@ -12,7 +12,7 @@ export interface ModalParams {
 
 export interface Props {
   movies: any,
-  modalParams: ModalParams,
+  modalParams?: ModalParams,
 }
 
 const MovieListComponent = ({ movies, modalParams }: Props) => (

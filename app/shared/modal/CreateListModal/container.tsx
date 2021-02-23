@@ -6,8 +6,8 @@ import { createListRequest as createListRequestAction } from '../../../store/the
 import CreateListModalComponent from './component';
 
 export interface Props {
-  icon: string,
-  text: string,
+  icon?: string,
+  text?: string,
   createListRequest(params: object): void;
 }
 
@@ -26,7 +26,7 @@ class CreateListModalContainer extends React.Component<Props, State> {
     this.setState({ modalVisible: false });
   };
 
-  onSubmit = (values: any, actions: any) => {
+  handleSubmit = (values: any, actions: any) => {
     const { createListRequest } = this.props;
     actions.setSubmitting(true);
     createListRequest({ values, actions, hideModal: this.hideModal });
@@ -38,7 +38,7 @@ class CreateListModalContainer extends React.Component<Props, State> {
       {...this.state}
       showModal={this.showModal}
       hideModal={this.hideModal}
-      onSubmit={this.onSubmit}
+      onSubmit={this.handleSubmit}
     />
   )
 }

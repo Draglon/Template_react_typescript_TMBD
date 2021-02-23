@@ -4,10 +4,15 @@ import { Typography, Row, Col, Card } from 'antd';
 
 import DeleteItemModal from '../../../shared/modal/DeleteItemModal';
 
-const ListsComponent = ({ lists, onConfirm }) => (
+interface Props {
+  lists: any,
+  onConfirm(): void,
+}
+
+const ListsComponent = ({ lists, onConfirm }: Props) => (
   <Row gutter={8} type="flex">
     <Col span={20} offset={2} className="lists">
-      {lists.map(item => (
+      {lists.map((item: any) => (
         <Col
           key={item.id}
           xs={{ span: 12 }}
@@ -38,10 +43,5 @@ const ListsComponent = ({ lists, onConfirm }) => (
     </Col>
   </Row>
 );
-
-// ListsComponent.propTypes = {
-//   lists: PropTypes.array.isRequired,
-//   onConfirm: PropTypes.func.isRequired,
-// };
 
 export default ListsComponent;

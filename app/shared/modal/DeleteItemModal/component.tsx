@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from 'antd';
 
 export interface Props {
-  type: string,
+  type?: string,
   showModal(): void;
 }
 

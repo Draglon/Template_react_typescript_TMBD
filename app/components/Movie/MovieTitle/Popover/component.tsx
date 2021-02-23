@@ -3,23 +3,28 @@ import { Popover, Icon } from 'antd';
 
 import PopoverContent from './PopoverContent';
 
-const PopoverComponent = ({ popoverVisible, closePopover, handleVisiblePopover, movieId }) => (
+interface Props {
+  movieId: string,
+  popoverVisible: boolean,
+  onClosePopover(): void,
+  onVisiblePopover(visible: boolean): void,
+}
+
+const PopoverComponent = ({
+  movieId,
+  popoverVisible,
+  onClosePopover,
+  onVisiblePopover,
+}: Props) => (
   <Popover
     title="Add movie to list"
     trigger="click"
     visible={popoverVisible}
-    onVisibleChange={handleVisiblePopover}
-    content={<PopoverContent closePopover={closePopover} movieId={movieId} />}
+    onVisibleChange={onVisiblePopover}
+    content={<PopoverContent onClosePopover={onClosePopover} movieId={movieId} />}
   >
     <Icon type="plus-circle" />
   </Popover>
 );
-
-// PopoverComponent.propTypes = {
-//   handleVisiblePopover: PropTypes.func.isRequired,
-//   closePopover: PropTypes.func.isRequired,
-//   movieId: PropTypes.number.isRequired,
-//   popoverVisible: PropTypes.bool.isRequired,
-// };
 
 export default PopoverComponent;

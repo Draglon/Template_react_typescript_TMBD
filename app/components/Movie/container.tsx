@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { movieRequest as movieRequestAction } from '../../store/theMovieDB/movie/actions';
 
+import { movieRequest as movieRequestAction } from '../../store/theMovieDB/movie/actions';
 import {
   getMovieById,
   getGenresById,
@@ -11,45 +11,33 @@ import {
 
 import MovieComponent from './component';
 
-class MovieContainer extends React.Component {
+interface Props {
+  match: any,
+  movie: any,
+  genres: any,
+  cast: any,
+  crew: any,
+  movieRequest(params: object): void
+}
+
+interface State {
+  movie: any,
+  genres: any,
+  cast: any,
+  crew: any,
+}
+
+class MovieContainer extends React.Component<Props, State> {
   componentDidMount() {
-    const {
-      movieRequest,
-      match: {
-        params: { id },
-      },
-    } = this.props;
+    const { movieRequest, match: { params: { id } } } = this.props;
+
     movieRequest({ movieId: id });
   }
 
-  render() {
-    return <MovieComponent {...this.props} />;
-  }
+  render = () => <MovieComponent {...this.props} />
 }
 
-// MovieContainer.defaultTypes = {
-//   movie: null,
-//   genres: [],
-//   cast: [],
-//   crew: [],
-// };
-
-// MovieContainer.propTypes = {
-//   movieRequest: PropTypes.func.isRequired,
-//   movie: PropTypes.object,
-//   genres: PropTypes.array,
-//   cast: PropTypes.array,
-//   crew: PropTypes.array,
-// };
-
-const mapStateToProps = (
-  state,
-  {
-    match: {
-      params: { id },
-    },
-  },
-) => ({
+const mapStateToProps = (state: State, { match: { params: { id } } }: any) => ({
   movie: getMovieById(state, id),
   genres: getGenresById(state, id),
   cast: getCastById(state, id),

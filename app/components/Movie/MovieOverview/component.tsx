@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { Row, Col, Typography } from 'antd';
 
-const MovieOverviewComponent = ({ title, overview }) => (
+interface Props {
+  title: string,
+  overview: string,
+}
+
+const MovieOverviewComponent = ({ title, overview }: Props) => (
   <Row className="top-margin">
     <Col span={20} offset={2}>
       <Typography.Title level={3}>{title}</Typography.Title>
@@ -9,10 +14,5 @@ const MovieOverviewComponent = ({ title, overview }) => (
     </Col>
   </Row>
 );
-
-// MovieOverviewComponent.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   overview: PropTypes.string.isRequired,
-// };
 
 export default MovieOverviewComponent;

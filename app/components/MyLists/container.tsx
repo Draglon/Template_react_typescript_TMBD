@@ -6,28 +6,39 @@ import { getCreatedLists } from '../../store/theMovieDB/myLists/selectors';
 
 import MyListsComponent from './component';
 
-class MyListsContainer extends React.Component {
+interface CreatedListsRequestParams {
+  page: number
+}
+
+interface Props {
+  myLists: any,
+  createdListsRequest(params: CreatedListsRequestParams): void
+}
+
+interface State {
+  myLists: any,
+}
+
+class MyListsContainer extends React.Component<Props, State> {
   componentDidMount() {
     const { createdListsRequest } = this.props;
     createdListsRequest({ page: 1 });
   }
 
-  getPage = page => {
+  handleGetPage = (page: number) => {
     const { createdListsRequest } = this.props;
     createdListsRequest({ page });
   };
 
-  render() {
-    return <MyListsComponent {...this.props} page={this.getPage} />;
-  }
+  render = () => (
+    <MyListsComponent
+      {...this.props}
+      onGetPage={this.handleGetPage}
+    />
+  )
 }
 
-// MyListsContainer.propTypes = {
-//   createdListsRequest: PropTypes.func.isRequired,
-//   myLists: PropTypes.object.isRequired,
-// };
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State) => ({
   myLists: getCreatedLists(state),
 });
 

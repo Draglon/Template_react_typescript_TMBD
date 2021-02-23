@@ -9,44 +9,45 @@ import { getDetailsList } from '../../store/theMovieDB/myLists/selectors';
 
 import MyListComponent from './component';
 
-class MyListContainer extends React.Component {
+interface DetailsListRequestParams {
+  listId: string,
+}
+
+interface Props {
+  myList: any,
+  match: any,
+  detailsListRequest(params: DetailsListRequestParams): void,
+  removeMovieListRequest(): void,
+}
+
+interface State {
+  myList: any,
+}
+
+class MyListContainer extends React.Component<Props, State> {
   componentDidMount() {
-    const {
-      detailsListRequest,
-      match: {
-        params: { id },
-      },
-    } = this.props;
+    const { detailsListRequest, match: { params: { id } } } = this.props;
+
     detailsListRequest({ listId: id });
   }
 
-  modalParams = () => {
-    const {
-      removeMovieListRequest,
-      match: {
-        params: { id },
-      },
-    } = this.props;
+  render = () => {
+    const { removeMovieListRequest,  match: { params: { id } } } = this.props;
 
-    return {
-      title: 'Do you want to delete movie from this list?',
-      params: { listId: id },
-      onConfirm: removeMovieListRequest,
-    };
-  };
-
-  render() {
-    return <MyListComponent {...this.props} modalParams={this.modalParams()} />;
+    return (
+      <MyListComponent
+        {...this.props}
+        modalParams={{
+          title: 'Do you want to delete movie from this list?',
+          params: { listId: id },
+          onConfirm: removeMovieListRequest,
+        }}
+      />
+    )
   }
 }
 
-// MyListContainer.propTypes = {
-//   detailsListRequest: PropTypes.func.isRequired,
-//   removeMovieListRequest: PropTypes.func.isRequired,
-//   myList: PropTypes.object.isRequired,
-// };
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State) => ({
   myList: getDetailsList(state),
 });
 

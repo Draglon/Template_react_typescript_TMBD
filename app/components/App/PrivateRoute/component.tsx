@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-export interface Props {
-  sessionId: string
-  component: React.ReactNode
+interface Props {
+  sessionId: string,
+  component: any,
+  path?: string,
+  exact?: boolean,
+  rest?: any,
 }
 
 const PrivateRouteComponent = ({

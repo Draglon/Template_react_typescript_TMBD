@@ -9,13 +9,33 @@ import { getWatchlist } from '../../store/theMovieDB/watchlist/selectors';
 
 import WatchlistComponent from './component';
 
-class WatchlistContainer extends React.Component {
+interface Watchlist {
+  page: number,
+  totalPages: number,
+  results: number,
+}
+
+interface WatchlistRequestParams {
+  page: number
+}
+
+interface Props {
+  watchlist: Watchlist
+  watchlistRequest(params: WatchlistRequestParams): void
+  addToWatchlistRequest(): void
+}
+
+interface State {
+  watchlist: Watchlist
+}
+
+class WatchlistContainer extends React.Component<Props, State> {
   componentDidMount() {
     const { watchlistRequest } = this.props;
     watchlistRequest({ page: 1 });
   }
 
-  getPage = page => {
+  handleGetPage = (page: number) => {
     const { watchlistRequest } = this.props;
     watchlistRequest({ page });
   };
@@ -25,7 +45,7 @@ class WatchlistContainer extends React.Component {
     return (
       <WatchlistComponent
         {...this.props}
-        page={this.getPage}
+        onGetPage={this.handleGetPage}
         modalParams={{
           title: 'Do you want to delete movie from watchlist?',
           params: { watchlist: false },
@@ -36,13 +56,7 @@ class WatchlistContainer extends React.Component {
   }
 }
 
-// WatchlistContainer.propTypes = {
-//   addToWatchlistRequest: PropTypes.func.isRequired,
-//   watchlistRequest: PropTypes.func.isRequired,
-//   watchlist: PropTypes.object.isRequired,
-// };
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State) => ({
   watchlist: getWatchlist(state),
 });
 

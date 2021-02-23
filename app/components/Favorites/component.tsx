@@ -10,9 +10,15 @@ export interface Favorites {
   results: number,
 }
 
+export interface ModalParams {
+  title: string,
+  params: object,
+  onConfirm(): void,
+}
+
 export interface Props {
   favorites: Favorites,
-  modalParams: object,
+  modalParams: ModalParams,
   onGetPage(page: number): void;
 }
 

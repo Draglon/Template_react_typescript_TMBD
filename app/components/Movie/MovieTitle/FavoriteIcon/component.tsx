@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Icon } from 'antd';
 
-const FavoriteIconComponent = ({ favorite, handleFavorite }) => (
-  <Icon type="book" theme={favorite ? 'filled' : undefined} onClick={handleFavorite} />
-);
+interface Props {
+  favorite: boolean,
+  onFavorite(): void,
+}
 
-// FavoriteIconComponent.propTypes = {
-//   handleFavorite: PropTypes.func.isRequired,
-//   favorite: PropTypes.bool.isRequired,
-// };
+const FavoriteIconComponent = ({ favorite, onFavorite }: Props) => (
+  <Icon type="book" theme={favorite ? 'filled' : undefined} onClick={onFavorite} />
+);
 
 export default FavoriteIconComponent;

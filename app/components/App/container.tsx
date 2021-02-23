@@ -4,11 +4,11 @@ import { getSessionId } from '../../store/theMovieDB/login/selectors';
 
 import AppComponent from './component';
 
-interface RootState {
+interface State {
   sessionId: string
 }
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: State) => ({
   sessionId: getSessionId(state),
 });
 

@@ -3,7 +3,12 @@ import { Row, Col, Typography, Card } from 'antd';
 
 import Image from '../../../shared/images/Image';
 
-const MovieDetailsComponent = ({ movieDetails, title }) => (
+interface Props {
+  movieDetails: any,
+  title: string,
+}
+
+const MovieDetailsComponent = ({ movieDetails, title }: Props) => (
   <>
     <Row>
       <Col span={10} offset={2} className="top-margin">
@@ -12,7 +17,7 @@ const MovieDetailsComponent = ({ movieDetails, title }) => (
     </Row>
     <Row gutter={8} type="flex">
       <Col span={20} offset={2} className="movie__details">
-        {movieDetails.map(item => (
+        {movieDetails.map((item: any) => (
           <Col
             key={item.id}
             xs={{ span: 12 }}
@@ -33,10 +38,5 @@ const MovieDetailsComponent = ({ movieDetails, title }) => (
     </Row>
   </>
 );
-
-// MovieDetailsComponent.propTypes = {
-//   movieDetails: PropTypes.array.isRequired,
-//   title: PropTypes.string.isRequired,
-// };
 
 export default MovieDetailsComponent;

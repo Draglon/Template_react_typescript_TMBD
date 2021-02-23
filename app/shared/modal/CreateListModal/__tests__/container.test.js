@@ -25,11 +25,11 @@ describe('<CreateListModalContainer />', () => {
     });
   });
 
-  describe('onSubmit()', () => {
-    it('should call onSubmit()', () => {
+  describe('handleSubmit()', () => {
+    it('should call handleSubmit()', () => {
       const values = { name: 'listname', description: 'description' };
       const actions = { setSubmitting: jest.fn() };
-      instance.onSubmit(values, actions);
+      instance.handleSubmit(values, actions);
 
       expect(actions.setSubmitting).toHaveBeenCalledWith(true);
       expect(store.dispatch).toHaveBeenCalledWith(

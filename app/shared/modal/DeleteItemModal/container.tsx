@@ -4,10 +4,10 @@ import { Modal } from 'antd';
 import DeleteItemModalComponent from './component';
 
 export interface Props {
-  type: string,
   title: string,
-  params: object,
-  onConfirm(params: object): void;
+  type?: string,
+  params?: object,
+  onConfirm(params?: any): void;
 }
 
 export interface State {}
